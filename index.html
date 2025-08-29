@@ -5,40 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Restaurant Finder</title>
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="shortcut icon" href="dinner.png" type="image/x-icon">
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
-
   <script src="index.js" defer></script>
 </head>
 <body>
-  <!-- Notification Dropdown -->
+  <div class="dark-overlay"></div>
+
+  <!-- Notification -->
   <div class="notification" id="notification"></div>
+
   <!-- Loading Spinner -->
   <div class="spinner-overlay" id="spinner">
     <div class="spinner"></div>
   </div>
 
-  <!-- Dark overlay -->
-  <div class="dark-overlay"></div>
-
-  <!-- App Container -->
   <div class="container">
     <div class="intro">
       <h1>Restaurant Finder</h1>
       <p>...find restaurants near you</p>
       <div class="finder-container">
         <div class="input">
-          <input type="text" id="find">
+          <input type="text" id="find" placeholder="click on icon to see restaurants">
           <i class="fa-solid fa-location-dot location"></i>
         </div>
         <div class="label">
@@ -48,14 +45,8 @@
       </div>
     </div>
 
-    <!-- Map Container -->
-    <!-- <div class="map-container" id="mapContainer">
-      <p class="location"></p>
-      <div class="map"></div>
-    </div> -->
-
-    <!-- Map + Restaurant Panel -->
-    <div class="map-container" id="mapContainer">
+    <!-- Map & Restaurant List -->
+    <div class="map-container" id="mapContainer" style="display: none;">
       <div class="map-panel">
         <div class="map"></div>
         <div class="restaurant-list" id="restaurantList">
@@ -64,9 +55,8 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <footer></footer>
+  <footer>&copy; DEON <span id="year"></span></footer>
 </body>
 </html>

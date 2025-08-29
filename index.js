@@ -2,45 +2,38 @@ const input = document.getElementById("find");
 const findBtn = document.querySelector(".label label");
 const locationIcon = document.querySelector(".input .location");
 const magnifier = document.querySelector(".magnifier");
-const mapContainer = document.querySelector(".map");
-const mapWrapper = document.querySelector(".map-container");
+const mapContainer = document.getElementById("mapContainer");
+const spinner = document.getElementById("spinner");
+const notification = document.getElementById("notification");
+// Set current year in footer
+document.getElementById("year").textContent = new Date().getFullYear();
 
 let map;
 
-const spinner = document.getElementById("spinner");
-
+// Spinner helpers
 function showSpinner() {
   spinner.style.display = "flex";
 }
-
 function hideSpinner() {
   spinner.style.display = "none";
 }
 
-
-// Show custom notification
+// Notification
 function showNotification(message) {
-  const notif = document.getElementById("notification");
-  notif.textContent = message;
-  notif.classList.add("show");
-
+  notification.textContent = message;
+  notification.style.display = "block";
   setTimeout(() => {
-    notif.classList.remove("show");
+    notification.style.display = "none";
   }, 3000);
 }
 
-// Create map with given coordinates
+// Create the map
 function createMap(lat = 6.5244, lon = 3.3792) {
-  // Reveal map
-  mapWrapper.classList.add("visible");
+  mapContainer.style.display = "block";
 
-  // Remove existing map
-  if (map) {
-    map.remove();
-  }
+  if (map) map.remove();
 
-  // Init new map
-  map = L.map(mapContainer).setView([lat, lon], 15);
+  map = L.map(document.querySelector(".map")).setView([lat, lon], 15);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '© OpenStreetMap contributors',
@@ -51,7 +44,7 @@ function createMap(lat = 6.5244, lon = 3.3792) {
   fetchNearbyRestaurants(lat, lon);
 }
 
-// Get current location via Geolocation API
+// Geolocation
 function getCurrentLocation() {
   showSpinner();
   if (navigator.geolocation) {
@@ -71,7 +64,7 @@ function getCurrentLocation() {
   }
 }
 
-// Search by location name using Nominatim
+// Search input
 function searchLocation(query) {
   showSpinner();
   fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`)
@@ -91,6 +84,7 @@ function searchLocation(query) {
     });
 }
 
+// Restaurant fetch
 function fetchNearbyRestaurants(lat, lon) {
   const overpassUrl = "https://overpass-api.de/api/interpreter";
   const query = `
@@ -112,9 +106,8 @@ function fetchNearbyRestaurants(lat, lon) {
     .then((res) => res.json())
     .then((data) => {
       hideSpinner();
-
       const restaurantList = document.getElementById("restaurantList").querySelector("ul");
-      restaurantList.innerHTML = ""; // Clear previous
+      restaurantList.innerHTML = "";
 
       if (!data.elements.length) {
         showNotification("No restaurants found nearby.");
@@ -135,12 +128,10 @@ function fetchNearbyRestaurants(lat, lon) {
         if (lat && lon) {
           const name = element.tags.name || "Unnamed Restaurant";
 
-          // Add marker
           const marker = L.marker([lat, lon])
             .addTo(map)
             .bindPopup(`<strong>${name}</strong>`);
 
-          // Add to restaurant list
           const li = document.createElement("li");
           li.textContent = name;
           li.addEventListener("click", () => {
@@ -158,24 +149,19 @@ function fetchNearbyRestaurants(lat, lon) {
     });
 }
 
-
-// Event Listeners
+// Events
 findBtn.addEventListener("click", getCurrentLocation);
 locationIcon.addEventListener("click", getCurrentLocation);
-
 input.addEventListener("keypress", (e) => {
   if (e.key === "Enter" && input.value.trim()) {
     searchLocation(input.value.trim());
   }
 });
-
 magnifier.addEventListener("click", () => {
   if (input.value.trim()) {
     searchLocation(input.value.trim());
   }
 });
 
-// Optional: Load a default location (e.g., Lagos)
-window.onload = () => {
-  // Do not show map initially
-};
+// Optional default map
+// window.onload = () => createMap(6.5244, 3.3792);
