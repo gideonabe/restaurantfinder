@@ -10,7 +10,8 @@ html, body{
 
 body {
   font-family: "Inter", sans-serif;
-  background: url('https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?w=1000&auto=format&fit=crop&q=100') no-repeat center center/cover;
+  /* background: url('https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?w=1000&auto=format&fit=crop&q=100') no-repeat center center/cover; */
+  background: url('https://images.unsplash.com/photo-1521917441209-e886f0404a7b') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -19,7 +20,7 @@ body {
 .dark-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
   z-index: 0;
 }
 
