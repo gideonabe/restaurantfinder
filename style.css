@@ -11,10 +11,100 @@ body{
   background-position: center;
   background-size: cover;
   height: 100vh;
+  z-index: 0;
 }
 
 .dark-overlay{
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.container{
+  position: relative;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: 5;
+}
+
+.intro{
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro h1{
+  font-size: 3rem;
+}
+
+.intro p{
+
+}
+
+.finder-container{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 4px;
+  /* position: relative; */
+  /* background-color: yellow; */
+}
+
+.finder-container .input{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+input{
+  width: 100%;
+  padding: 12px 40px 12px 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus{
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px #dac20c;
+}
+
+.location{
+  position: absolute;
+  color: #e26518;
+  right: 12px;
+  top: 23%;
+  font-size: 1.3rem;
+}
+
+.finder-container .label{
+  display: flex;
+  position: relative;
+  /* padding: 10px 10px; */
+}
+
+.finder-container .label label{
+  font-size: 1.6rem;
+  background-color: #e26518;
+  padding:  4px 40px 4px 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.magnifier{
+  position: absolute;
+  right: 10px;
+  top: 30%;
+  font-size: 1.3rem;
 }
