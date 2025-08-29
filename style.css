@@ -235,7 +235,7 @@ footer {
 
   .finder-container .label label{
     font-size: 1rem;
-    padding: 4px 30px 4px 10px;
+    padding: 4px 32px 4px 10px;
   }
 
   .location{
@@ -245,6 +245,7 @@ footer {
 
   .magnifier{
     /* display: none; */
+    top: 25%;
     font-size: 1rem;
     /* right: 5px; */
   }
