@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Restaurant Finder</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+
   <script src="index.js" defer></script>
 </head>
 <body>
+  <!-- Notification Dropdown -->
+  <div class="notification" id="notification"></div>
+  <!-- Loading Spinner -->
+  <div class="spinner-overlay" id="spinner">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Dark overlay -->
   <div class="dark-overlay"></div>
+
+  <!-- App Container -->
   <div class="container">
     <div class="intro">
       <h1>Restaurant Finder</h1>
@@ -28,15 +47,26 @@
         </div>
       </div>
     </div>
-    <div class="map-container">
+
+    <!-- Map Container -->
+    <!-- <div class="map-container" id="mapContainer">
       <p class="location"></p>
       <div class="map"></div>
+    </div> -->
+
+    <!-- Map + Restaurant Panel -->
+    <div class="map-container" id="mapContainer">
+      <div class="map-panel">
+        <div class="map"></div>
+        <div class="restaurant-list" id="restaurantList">
+          <h3>Nearby Restaurants</h3>
+          <ul></ul>
+        </div>
+      </div>
     </div>
+
   </div>
 
-  <footer>
-
-  </footer>
-
+  <footer></footer>
 </body>
 </html>
