@@ -7,7 +7,9 @@
 body{
   position: relative;
   font-family: "Inter", sans-serif;
-  background: url('https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?w=1000&auto=format&fit=crop&q=60') no-repeat;
+  background: url('https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?w=1000&auto=format&fit=crop&q=100') no-repeat;
+  background: url('https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b');
+
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -49,7 +51,7 @@ body{
 }
 
 .finder-container{
-  width: 80%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,4 +109,27 @@ input:focus{
   right: 10px;
   top: 30%;
   font-size: 1.3rem;
+}
+
+@media screen and (max-width: 763px) {
+  .intro{
+    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    /* color: black; */
+
+  }
+  .finder-container{
+    /* display: none; */
+    width: 85%;
+    /* background-color: red; */
+    color: white;
+  }
+
+  .finder-container .label label{
+    border-top-left-radius: -15px;
+    /* display: none; */
+  }
 }
